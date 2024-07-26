@@ -53,9 +53,15 @@ Finalmente, inicia el servidor de desarrollo:
 python manage.py runserver
 ```
 
+### Paso 7: Si se presenta algun error en el EndPoint
+Instala la siguiente dependencias faltante.
+```sh
+pip install argon2-cffi
+```
+
 Ahora deberías poder acceder a la aplicación en http://127.0.0.1:8000/.
 
-### Paso 7: Desactivar el entorno virtual
+### Paso 8: Desactivar el entorno virtual
 Cuando hayas terminado, puedes desactivar el entorno virtual con:
 
 ```sh
