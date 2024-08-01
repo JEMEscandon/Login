@@ -32,7 +32,7 @@ def get_post():
 
 @app.post('/posts')
 def save_post(post: Post):
-    print(post)
+    print(post.dict())
     return "Received"
 
 # --------------------------------------------------------------
