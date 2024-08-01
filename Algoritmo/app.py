@@ -1,0 +1,1 @@
+print("Primeras lineas para crear el super algoritmo")
