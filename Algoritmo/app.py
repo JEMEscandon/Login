@@ -3,16 +3,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Text, Optional
 from datetime import datetime
+from uuid import uuid4
 
 
 # Agregando un modelo de un post
 class Post(BaseModel):
-    id: Optional[str]
+    id: Optional[str] = None
     title: str
     author: str
     content: Text
     created_at: datetime = datetime.now()
-    published_at: Optional[datetime] 
+    published_at: Optional[datetime] = None
     published: bool = False
 
 # Creando una BD de forma temporal
@@ -32,7 +33,8 @@ def get_post():
 
 @app.post('/posts')
 def save_post(post: Post):
-    print(post.dict())
+    post.id = str(uuid4())
+    posts.append(post.dict())
     return "Received"
 
 # --------------------------------------------------------------
