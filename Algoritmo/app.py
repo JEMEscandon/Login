@@ -30,6 +30,11 @@ def read_root():
 def get_post():
     return posts
 
+@app.post('/posts')
+def save_post(post: Post):
+    print(post)
+    return "Received"
+
 # --------------------------------------------------------------
 # Para Ejecutar la aplicación, ejecutar el siguiente comando:
 # uvicorn app:app
