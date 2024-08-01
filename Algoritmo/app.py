@@ -1,5 +1,19 @@
 # Importando FastAPI
 from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import Text, Optional
+from datetime import datetime
+
+
+# Agregando un modelo de un post
+class Post(BaseModel):
+    id: Optional[str]
+    title: str
+    author: str
+    content: Text
+    created_at: datetime = datetime.now()
+    published_at: Optional[datetime] 
+    published: bool = False
 
 # Creando una BD de forma temporal
 posts = []
