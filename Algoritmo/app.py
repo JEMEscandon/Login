@@ -53,6 +53,15 @@ def delete_post(id_post: str):
             return {"message": "Post has been deleted sucessfully"}
     return HTTPException(status_code = 404, detail = "Post not found")
 
+@app.put('/posts/{id_post}')
+def update_post(id_post: str, newPost: Post):
+    for index, post in enumerate(posts):
+        if post["id"] == id_post:
+            posts[index]["title"] = newPost.title
+            posts[index]["author"] = newPost.author
+            posts[index]["content"] = newPost.content
+            return {"message": "Post has been update succefully"} 
+    return HTTPException(status_code = 404, detail = "Post not fount")
 # --------------------------------------------------------------
 # Para Ejecutar la aplicación, ejecutar el siguiente comando:
 # uvicorn app:app
