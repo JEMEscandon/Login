@@ -35,7 +35,15 @@ def get_post():
 def save_post(post: Post):
     post.id = str(uuid4())
     posts.append(post.dict())
-    return "Received"
+    return posts[-1]
+
+@app.get('/posts/{id_post}')
+def get_post(id_post: str):
+    #print(id_post)
+    for post in posts:
+        if post["id"] == id_post:
+            return post  
+    return "Not found"
 
 # --------------------------------------------------------------
 # Para Ejecutar la aplicación, ejecutar el siguiente comando:
