@@ -1,5 +1,5 @@
 # Importando FastAPI
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Text, Optional
 from datetime import datetime
@@ -43,7 +43,16 @@ def get_post(id_post: str):
     for post in posts:
         if post["id"] == id_post:
             return post  
-    return "Not found"
+    return HTTPException(status_code = 404, detail = "Item not found")
+
+@app.delete('/posts/{id_post}')
+def delete_post(id_post: str):
+    for post in posts:
+        if post["id"] == id_post:
+            index = posts.index(post)
+            posts.pop(index)
+            return "Post elimited"
+    return HTTPException(status_code = 404, detail = "Item not elimited")
 
 # --------------------------------------------------------------
 # Para Ejecutar la aplicación, ejecutar el siguiente comando:
