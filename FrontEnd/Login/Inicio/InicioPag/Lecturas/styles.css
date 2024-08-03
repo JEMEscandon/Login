@@ -1,0 +1,136 @@
+/* Mantener el estilo de la cabecera y el menú */
+header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF; /* Fondo blanco */
+    padding: 10px 20px;
+    border-bottom: 1px solid #DDDDDD; /* Línea sutil de separación */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding-left: 20px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    position: relative;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+.menu ul li a:hover {
+    color: #007BFF;
+    border-color: #007BFF;
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.login-icon img {
+    width: 40px;
+    cursor: pointer;
+}
+
+.login-icon img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+.login-icon img {
+    width: 40px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 40px; /* Ajusta el tamaño de la imagen según sea necesario */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+    object-fit: cover; /* Asegura que la imagen cubra completamente el área */
+  }
+
+/* Estilos para la página de lectura de libros */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #F5F5F5;
+    height: calc(100vh - 70px); /* Ajuste según el alto de la cabecera */
+}
+
+.book-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.book-cover {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #E0E0E0;
+}
+
+.book-cover img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.book-content {
+    width: 70%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.book-content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.book-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
