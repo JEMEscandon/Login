@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="/Inicio/InicioPag/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Biblioteca Virtual</div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Libros</a></li>
+                <li><a href="#">Autores</a></li>
+                <li><a href="#">Categorías</a></li>
+            </ul>
+        </nav>
+        <div class="login-icon">
+            <img src="/Inicio/InicioPag/Img/reading-7334749_1920.png" alt="Iniciar sesión">
+        </div>
+    </header>
+
+    <section class="carousel-container">
+        <button class="carousel-button left" onclick="previousSlide()">&#10094;</button>
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="/Inicio/InicioPag/Img/one-3176454_1280.jpg" alt="Libro 1">
+                <div class="book-info">
+                    <h3>Libro 1</h3>
+                    <p>Descripción breve del libro 1.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/Inicio/InicioPag/Img/lake-5260223_1280.jpg" alt="Libro 2">
+                <div class="book-info">
+                    <h3>Libro 2</h3>
+                    <p>Descripción breve del libro 2.</p>
+                </div>
+            </div>
+            <!-- Agrega más libros aquí -->
+        </div>
+        <button class="carousel-button right" onclick="nextSlide()">&#10095;</button>
+    </section>
+
+    <script src="/Inicio/InicioPag/JS_Ini.js"></script>
+</body>
+</html>
