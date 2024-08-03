@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.views import login
-from bookPlatform.views import signup,get_csrf_token,signout,signin
+from bookPlatform.views import signup,get_csrf_token,signout,signin,consultGenre,favoriteGenre
 
 urlpatterns = [
     path('api/csrf_token/', get_csrf_token, name='get_csrf_token'),
@@ -27,4 +27,6 @@ urlpatterns = [
     path('api/signup/', signup, name='signup'),
     path('api/logout/', signout, name='logout'),
     path('api/signin/', signin, name='signin'),
+    path('api/favoriteGenre/', favoriteGenre, name='favoriteGenre'),
+    path('api/consultGenre/', consultGenre, name='consultGenre'),
 ]

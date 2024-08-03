@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from django.db import IntegrityError
 from django.contrib.auth.hashers import make_password
+from bookPlatform.models import UserGenre,Genre
 import json
 import traceback
 # Create your views here.
@@ -43,7 +44,11 @@ def signup(request):
                     user = User.objects.create_user(username=username, password=password,email=email)
                     user.save()
                     login(request,user)
-                    return JsonResponse({'message': 'Usuario creado correctamente'}, status=201)
+                    user_data = {
+                        'id': user.id,
+                        'username': user.username,
+                    }
+                    return JsonResponse({'message': 'Usuario creado correctamente','user':user_data}, status=201)
                 else:
                     return JsonResponse({'message': 'Complete todos los campos'}, status=400)
             except IntegrityError:
@@ -74,18 +79,34 @@ def signin(request):
             print('username: ',username)
             print('password: ',password)
             user = authenticate(request, username=username, password=password)
-            print(user)
             if user is None:
-                # users = User.objects.all()
-                # for user in users:
-                #     if not user.password.startswith('pbkdf2_'):  # Comprueba si la contraseña ya está hasheada
-                #         user.password = make_password(user.password)
-                #         user.save()
-                return JsonResponse({'message': 'El usuario o la contraseña son incorrectas','status':'error'})
+                return JsonResponse({'message': 'El usuario o la contraseña son incorrectas','status':'error','user':user})
             else:
                 login(request,user)
                 return JsonResponse({'message': 'El usuario autenticado correctamente','status':'success'})
     
         except json.JSONDecodeError as e:
-            return JsonResponse({'error': 'Invalid JSON format in request body'}, status=400)
-    
+            return JsonResponse({'error': 'Invalid JSON format in request body','status':'error'}, status=400)
+
+def favoriteGenre(request):
+
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user = User.objects.get(id=int(data["id_user"]))
+            #user = int(data["id_user"])
+            genres = data["genres"] 
+            if len(genres)>1:
+                for res in genres:
+                    print(res)
+                    genre = Genre.objects.get(genre_name=res)
+                    # Crear e insertar gusto del usuario
+                    user_genre = UserGenre(user=user, genre=genre)
+                    user_genre.save()
+            return JsonResponse({'message': 'Se registro las preferencias corretamente'}, status=201)
+        except:
+            return JsonResponse({'status':'error'}, status=400)
+def consultGenre(request):
+    x=UserGenre.objects.filter(user=3)
+    print(x)
+    return HttpResponse(x[0])
